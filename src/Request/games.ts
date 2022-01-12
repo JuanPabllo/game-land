@@ -11,3 +11,13 @@ export const GetAllGames = async () => {
     console.log(error);
   }
 };
+
+export const GetInfoGameById = async (id: string) => {
+  try {
+    const response = await api.get(`games/${id}?key=${key}`);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
