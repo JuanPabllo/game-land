@@ -17,7 +17,6 @@ import {
 import HomeIcon from '@mui/icons-material/Home';
 import StarIcon from '@mui/icons-material/Star';
 import MenuIcon from '@mui/icons-material/Menu';
-import { GetAllGames } from '../../Request/games';
 
 const drawerWidth = 240;
 
@@ -27,13 +26,6 @@ export default function Sidebar() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  // const a = async () => {
-  //   const response = await GetAllGames();
-  //   console.log(response);
-  // };
-
-  // a();
 
   const drawer = (
     <div>
