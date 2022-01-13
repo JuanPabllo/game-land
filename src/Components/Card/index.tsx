@@ -40,11 +40,17 @@ export default function Cards({ name, id }: CardProps) {
           image={data?.background_image}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            sx={{ color: '#7935D8' }}
+            gutterBottom
+            variant="h5"
+            component="div"
+          >
             {name}
           </Typography>
           <Typography
             variant="body2"
+            sx={{ color: '#000' }}
             color="text.secondary"
             dangerouslySetInnerHTML={ReactToHTML(
               `${data?.description?.substr(0, 150)}...`
@@ -52,7 +58,9 @@ export default function Cards({ name, id }: CardProps) {
           />
         </CardContent>
         <CardActions>
-          <Button size="small">Detalhes</Button>
+          <Button sx={{ color: '#7935D8' }} size="small">
+            Detalhes
+          </Button>
         </CardActions>
       </Card>
     )
