@@ -1,5 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Grid, Box, Button, CircularProgress } from '@mui/material';
+import {
+  Grid,
+  Box,
+  Button,
+  CircularProgress,
+  useMediaQuery,
+} from '@mui/material';
 
 import Cards from '../../Components/Card';
 import Sidebar from '../../Components/Sidebar';
@@ -10,6 +16,8 @@ export default function Home() {
   const [data, setdata] = useState<any>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  const matches = useMediaQuery('(min-width:600px)');
 
   const handlerDataApi = useCallback(async () => {
     setLoading(true);
@@ -43,7 +51,7 @@ export default function Home() {
           <CircularProgress />
         </Box>
       ) : (
-        <Box sx={{ marginLeft: '250px !important' }}>
+        <Box sx={{ marginLeft: `${matches ? '250px !important' : ''}` }}>
           <Grid
             container
             rowSpacing={3}
@@ -53,7 +61,7 @@ export default function Home() {
               data.map((item: any) => {
                 return item.games.map((item: any) => {
                   return (
-                    <Grid item xs={3}>
+                    <Grid xs item>
                       <Cards name={item.name} id={item.id} key={item.id} />
                     </Grid>
                   );
