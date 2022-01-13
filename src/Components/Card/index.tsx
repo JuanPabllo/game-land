@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { CardProps, ResponseApiGameInfo } from './interface';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+} from '@mui/material';
 
 import { GetInfoGameById } from '../../Request/games';
+
+import { CardProps, ResponseApiGameInfo } from './interface';
+
 import ReactToHTML from '../../utils/ReactToHtml';
 
 export default function Cards({ name, id }: CardProps) {

@@ -11,6 +11,7 @@ import Cards from '../../Components/Card';
 import Sidebar from '../../Components/Sidebar';
 
 import { GetAllGames } from '../../Request/games';
+
 import { ResponseApiAllGames } from './interface';
 
 export default function Home() {

@@ -3,7 +3,6 @@ import { api } from '../Services/api';
 const key = 'fc0d58ba5bbc493e99f0906a975fa94a';
 
 export const GetAllGames = async (page: number) => {
-  // https://api.rawg.io/api/platforms?page_size=10%3Fkey%3Dfc0d58ba5bbc493e99f0906a975fa94a
   try {
     const response = await api.get(
       `/platforms?key=${key}&page_size=10&page=${page}`

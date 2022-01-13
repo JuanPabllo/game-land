@@ -18,8 +18,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import StarIcon from '@mui/icons-material/Star';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const drawerWidth = 240;
-
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -57,8 +55,8 @@ export default function Sidebar() {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { sm: 'calc(100% - 240px)' },
+          ml: { sm: '240px' },
           backgroundColor: '#7935D8',
         }}
       >
@@ -79,7 +77,7 @@ export default function Sidebar() {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: 240 }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         <Drawer
@@ -93,7 +91,7 @@ export default function Sidebar() {
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
-              width: drawerWidth,
+              width: 240,
             },
           }}
         >
@@ -105,7 +103,7 @@ export default function Sidebar() {
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
-              width: drawerWidth,
+              width: 240,
             },
           }}
           open
@@ -118,7 +116,7 @@ export default function Sidebar() {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - 240px)` },
         }}
       >
         <Toolbar />
