@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Grid, Box, Button } from '@mui/material';
+import { useState, useEffect, useCallback } from 'react';
+import { Grid, Box, Button, CircularProgress } from '@mui/material';
 
 import Cards from '../../Components/Card';
 import Sidebar from '../../Components/Sidebar';
@@ -8,56 +8,64 @@ import { GetAllGames } from '../../Request/games';
 
 export default function Home() {
   const [data, setdata] = useState<any>([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const handlerDataApi = async () => {
+  const handlerDataApi = useCallback(async () => {
+    setLoading(true);
     try {
-      const response = await GetAllGames();
-      setdata(response);
+      const response = await GetAllGames(page);
+      setdata(response.results);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [page]);
+
+  console.log(page);
 
   useEffect(() => {
     handlerDataApi();
-  }, []);
-
-  const pages = Math.ceil(data?.results?.length / 10);
-  const startIndex = currentPage * 10;
-  const endIndex = startIndex + 10;
-  const currentItems = data?.results?.slice(startIndex, endIndex);
-
-  console.log(data);
+  }, [page]);
 
   return (
     <>
       <Sidebar />
-      <Box sx={{ marginLeft: '250px !important' }}>
-        <Grid container rowSpacing={3} columnSpacing={{ xs: 2, sm: 2, md: 3 }}>
-          {currentItems &&
-            currentItems.map((item: any) => {
-              return item.games.map((item: any) => {
-                return (
-                  <Grid item xs={3}>
-                    <Cards name={item.name} id={item.id} key={item.id} />
-                  </Grid>
-                );
-              });
-            })}
-        </Grid>
-        {Array.from(Array(pages), (item: any, index: any) => {
-          return (
-            <Button
-              value={index}
-              onClick={(e: any) => setCurrentPage(Number(e.target.value))}
-              variant="contained"
-            >
-              {index + 1}
-            </Button>
-          );
-        })}
-      </Box>
+      {loading ? (
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: '240px',
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Box sx={{ marginLeft: '250px !important' }}>
+          <Grid
+            container
+            rowSpacing={3}
+            columnSpacing={{ xs: 2, sm: 2, md: 3 }}
+          >
+            {data &&
+              data.map((item: any) => {
+                return item.games.map((item: any) => {
+                  return (
+                    <Grid item xs={3}>
+                      <Cards name={item.name} id={item.id} key={item.id} />
+                    </Grid>
+                  );
+                });
+              })}
+          </Grid>
+          <Button disabled={page === 1} onClick={() => setPage(page - 1)}>
+            Voltar
+          </Button>
+          <Button onClick={() => setPage(page + 1)}>Próximo</Button>
+        </Box>
+      )}
     </>
   );
 }
