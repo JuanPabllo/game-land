@@ -5,5 +5,6 @@ export interface CardProps {
 
 export interface ResponseApiGameInfo {
   background_image: string;
+  name: string;
   description: string;
 }

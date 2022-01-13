@@ -35,7 +35,7 @@ export default function Cards({ name, id }: CardProps) {
       <Card sx={{ minWidth: 345 }}>
         <CardMedia
           component="img"
-          alt="green iguana"
+          alt={data?.name}
           height="140"
           image={data?.background_image}
         />
