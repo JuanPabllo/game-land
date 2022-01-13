@@ -16,7 +16,6 @@ export default function Home() {
   const [data, setdata] = useState<any>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-
   const matches = useMediaQuery('(min-width:600px)');
 
   const handlerDataApi = useCallback(async () => {
@@ -30,8 +29,6 @@ export default function Home() {
       setLoading(false);
     }
   }, [page]);
-
-  console.log(page);
 
   useEffect(() => {
     handlerDataApi();
