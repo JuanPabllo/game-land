@@ -11,9 +11,10 @@ import Cards from '../../Components/Card';
 import Sidebar from '../../Components/Sidebar';
 
 import { GetAllGames } from '../../Request/games';
+import { ResponseApiAllGames } from './interface';
 
 export default function Home() {
-  const [data, setdata] = useState<any>([]);
+  const [data, setdata] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const matches = useMediaQuery('(min-width:600px)');
@@ -55,8 +56,8 @@ export default function Home() {
             columnSpacing={{ xs: 2, sm: 2, md: 3 }}
           >
             {data &&
-              data.map((item: any) => {
-                return item.games.map((item: any) => {
+              data.map((item: ResponseApiAllGames) => {
+                return item.games.map((item) => {
                   return (
                     <Grid xs item>
                       <Cards name={item.name} id={item.id} key={item.id} />

@@ -5,13 +5,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardProps } from './interface';
+import { CardProps, ResponseApiGameInfo } from './interface';
 
 import { GetInfoGameById } from '../../Request/games';
 import ReactToHTML from '../../utils/ReactToHtml';
 
 export default function Cards({ name, id }: CardProps) {
-  const [data, setdata] = useState<any>([]);
+  const [data, setdata] = useState<ResponseApiGameInfo[] | any>([]);
 
   const handlerInfoGame = async () => {
     try {
