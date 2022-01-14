@@ -79,7 +79,7 @@ function Game() {
       >
         <Box>
           <Typography sx={{ color: '#7935D8' }} variant="h5">
-            Categorias,:
+            Categorias:
           </Typography>
           {Games.data.category.map((item: string) => (
             <Typography variant="subtitle1">- {item}</Typography>
