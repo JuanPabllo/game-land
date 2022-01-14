@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Card,
   CardActions,
@@ -10,12 +11,25 @@ import {
 
 import { GetInfoGameById } from '../../Request/games';
 
+import { formatObjectGamesForSetRedux } from './helper';
+
 import { CardProps, ResponseApiGameInfo } from './interface';
 
-import ReactToHTML from '../../utils/ReactToHtml';
+import ReactToHTML from '../../Utils/ReactToHtml';
+import { setGameInfos } from '../../Actions/Games';
 
-export default function Cards({ name, id }: CardProps) {
+export default function Cards({ id }: CardProps) {
   const [data, setdata] = useState<ResponseApiGameInfo[] | any>([]);
+  const dispatch = useDispatch();
+
+  const setInfoGamesInRedux = () => {
+    try {
+      const datas = formatObjectGamesForSetRedux(data);
+      dispatch(setGameInfos(datas));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handlerInfoGame = async () => {
     try {
@@ -46,7 +60,7 @@ export default function Cards({ name, id }: CardProps) {
             variant="h5"
             component="div"
           >
-            {name}
+            {data?.name}
           </Typography>
           <Typography
             variant="body2"
@@ -58,7 +72,11 @@ export default function Cards({ name, id }: CardProps) {
           />
         </CardContent>
         <CardActions>
-          <Button sx={{ color: '#7935D8' }} size="small">
+          <Button
+            onClick={() => setInfoGamesInRedux()}
+            sx={{ color: '#7935D8' }}
+            size="small"
+          >
             Detalhes
           </Button>
         </CardActions>

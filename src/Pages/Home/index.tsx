@@ -61,7 +61,7 @@ export default function Home() {
                 return item.games.map((item) => {
                   return (
                     <Grid xs item>
-                      <Cards name={item.name} id={item.id} key={item.id} />
+                      <Cards id={item.id} key={item.id} />
                     </Grid>
                   );
                 });
