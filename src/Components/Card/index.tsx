@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   Card,
   CardActions,
@@ -15,19 +16,19 @@ import { formatObjectGamesForSetRedux } from './helper';
 import { setGameInfos } from '../../Actions/Games';
 
 import { GetInfoGameById } from '../../Request/games';
-import { RootState } from '../../Redux/types';
 
 import { CardProps, ResponseApiGameInfo } from './interface';
 
-export default function Cards({ id }: CardProps) {
+export default function Cards({ id, slug }: CardProps) {
   const [data, setdata] = useState<ResponseApiGameInfo[] | any>([]);
   const dispatch = useDispatch();
-  const { Games } = useSelector((state: RootState) => state);
+  let navigate = useNavigate();
 
   const setInfoGamesInRedux = () => {
     try {
       const datas = formatObjectGamesForSetRedux(data);
       dispatch(setGameInfos(datas));
+      navigate(`/game/${slug}`);
     } catch (error) {
       console.log(error);
     }

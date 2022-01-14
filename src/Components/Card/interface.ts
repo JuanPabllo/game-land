@@ -1,5 +1,6 @@
 export interface CardProps {
   id: string;
+  slug: string;
 }
 
 export interface ResponseApiGameInfo {
