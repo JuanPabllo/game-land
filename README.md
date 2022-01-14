@@ -8,7 +8,7 @@
 - Redux persist
 - Typescript
 
-# 🛑 Como rodar o projeto
+## 🛑 Como rodar o projeto
 
 - Instalar dependências:
 
