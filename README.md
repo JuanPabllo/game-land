@@ -1,5 +1,3 @@
-# Teste - Readme (Juan)
-
 ## 🚀 Tecnologias:
 
 - React
