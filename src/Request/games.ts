@@ -1,6 +1,7 @@
 import { api } from '../Services/api';
 
-const key = 'fc0d58ba5bbc493e99f0906a975fa94a';
+// The correct thing is key to leave this key in an .env, but for being a test I will leave hard code
+const key = 'b054c8abfab9426a828a2fdac9266bd3';
 
 export const GetAllGames = async (page: number) => {
   try {
