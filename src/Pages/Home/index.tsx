@@ -60,7 +60,7 @@ export default function Home() {
               data.map((item: ResponseApiAllGames) => {
                 return item.games.map((item) => {
                   return (
-                    <Grid xs item>
+                    <Grid key={item.id} xs item>
                       <Cards id={item.id} slug={item.slug} key={item.id} />
                     </Grid>
                   );
