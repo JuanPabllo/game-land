@@ -22,7 +22,7 @@ import { CardProps, ResponseApiGameInfo } from './interface';
 export default function Cards({ id, slug }: CardProps) {
   const [data, setdata] = useState<ResponseApiGameInfo[] | any>([]);
   const dispatch = useDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const setInfoGamesInRedux = () => {
     try {

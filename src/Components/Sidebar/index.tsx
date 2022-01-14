@@ -33,14 +33,10 @@ export default function Sidebar() {
         }}
       />
       <List>
-        {['Início', 'Favoritos'].map((text, index) => (
+        {['Início'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              {index % 2 === 0 ? (
-                <HomeIcon sx={{ color: '#7935D8' }} />
-              ) : (
-                <StarIcon sx={{ color: '#7935D8' }} />
-              )}
+              <HomeIcon sx={{ color: '#7935D8' }} />
             </ListItemIcon>
             <ListItemText sx={{ color: '#000' }} primary={text} />
           </ListItem>
