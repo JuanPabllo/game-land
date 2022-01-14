@@ -1,3 +1,5 @@
+- Para acessar o projeto: https://game-land-two.vercel.app/
+
 ## 🚀 Tecnologias:
 
 - React
