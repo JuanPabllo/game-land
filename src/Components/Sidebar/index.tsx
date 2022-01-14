@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import {
   AppBar,
   Box,
@@ -13,9 +12,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-
 import HomeIcon from '@mui/icons-material/Home';
-import StarIcon from '@mui/icons-material/Star';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Sidebar() {
@@ -33,7 +30,7 @@ export default function Sidebar() {
         }}
       />
       <List>
-        {['Início'].map((text, index) => (
+        {['Início'].map((text) => (
           <ListItem button key={text}>
             <ListItemIcon>
               <HomeIcon sx={{ color: '#7935D8' }} />
