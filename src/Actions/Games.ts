@@ -3,10 +3,10 @@ import { SET_GAMES_INFO } from './actionTypes';
 interface GamesProps {
   name: string;
   photo: string;
-  category: string;
   description: string;
-  platforms: string;
-  company: string;
+  category: string[];
+  platforms: string[];
+  company: string[];
 }
 
 export const setGameInfos = (data: GamesProps) => ({

@@ -1,33 +1,21 @@
-interface formatObjectGamesForSetReduxProps {
-  name: string;
-  background_image: string;
-  description: string;
-  genres: Array<{
-    name: string;
-  }>;
-  platforms: Array<{
-    platform: {
-      name: string;
-    };
-  }>;
-  developers: Array<{
-    name: string;
-  }>;
-}
+import { formatObjectGamesForSetReduxProps } from './interface';
 
 export const formatObjectGamesForSetRedux = (
   data: formatObjectGamesForSetReduxProps
 ) => {
-  const { name, background_image, description } = data;
+  const { name, background_image, description, platforms, developers, genres } =
+    data;
 
-  console.log(data);
+  const formatPlataforms = platforms.map((item) => item.platform.name);
+  const formatDevelopers = developers.map((item) => item.name);
+  const formatGenres = genres.map((item) => item.name);
 
   return {
     name,
     photo: background_image,
     description,
-    category: 'RPG',
-    platforms: 'XBOX S',
-    company: 'TOP',
+    category: formatGenres,
+    platforms: formatPlataforms,
+    company: formatDevelopers,
   };
 };

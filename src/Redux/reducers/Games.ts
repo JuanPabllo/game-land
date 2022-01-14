@@ -7,9 +7,9 @@ const initialState = {
     name: '',
     photo: '',
     description: '',
-    category: '',
-    platforms: '',
-    company: '',
+    category: [],
+    platforms: [],
+    company: [],
   },
 };
 

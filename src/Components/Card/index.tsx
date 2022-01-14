@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Card,
   CardActions,
@@ -9,18 +9,20 @@ import {
   Typography,
 } from '@mui/material';
 
-import { GetInfoGameById } from '../../Request/games';
-
+import ReactToHTML from '../../Utils/ReactToHtml';
 import { formatObjectGamesForSetRedux } from './helper';
 
-import { CardProps, ResponseApiGameInfo } from './interface';
-
-import ReactToHTML from '../../Utils/ReactToHtml';
 import { setGameInfos } from '../../Actions/Games';
+
+import { GetInfoGameById } from '../../Request/games';
+import { RootState } from '../../Redux/types';
+
+import { CardProps, ResponseApiGameInfo } from './interface';
 
 export default function Cards({ id }: CardProps) {
   const [data, setdata] = useState<ResponseApiGameInfo[] | any>([]);
   const dispatch = useDispatch();
+  const { Games } = useSelector((state: RootState) => state);
 
   const setInfoGamesInRedux = () => {
     try {
